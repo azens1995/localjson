@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">LocalJsonTest</string>
+    <string name="transition_image">ImageTransition</string>
+    <string name="transition_name">NameTransition</string>
+    <string name="transition_email">EmailTransition</string>
 </resources>

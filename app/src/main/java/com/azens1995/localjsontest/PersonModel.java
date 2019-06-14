@@ -1,22 +1,28 @@
 package com.azens1995.localjsontest;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by Azens Eklak on 2019-06-13.
  * Ishani Technology Pvt. Ltc
  * azens1995@gmail.com
  */
-public class PersonModel {
+public class PersonModel implements Serializable {
     private String name;
     private String surname;
     private String email;
     private String poem;
+    private String photo;
 
 
-    public PersonModel(String name, String surname, String email, String poem) {
+    public PersonModel(String name, String surname, String email, String poem, String photo) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.poem = poem;
+        this.photo = photo;
     }
 
     public String getName() {
@@ -49,6 +55,14 @@ public class PersonModel {
 
     public void setPoem(String poem) {
         this.poem = poem;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override

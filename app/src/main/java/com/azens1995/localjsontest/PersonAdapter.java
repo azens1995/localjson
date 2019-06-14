@@ -22,9 +22,11 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     private LayoutInflater layoutInflater;
     private List<PersonModel> personList = new ArrayList<>();
+    private PersonClick personClick;
 
-    public PersonAdapter(List<PersonModel> personList) {
+    public PersonAdapter(List<PersonModel> personList, PersonClick click) {
         this.personList = personList;
+        this.personClick = click;
     }
 
     @NonNull
@@ -37,7 +39,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(personList.get(position));
+        holder.bind(personList.get(position), personClick);
     }
 
     @Override
@@ -52,8 +54,11 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             this.studentBinding = liststudentBinding;
         }
 
-        public void  bind(PersonModel personModel){
+        public void  bind(final PersonModel personModel, final PersonClick personClick){
             studentBinding.setStudent(personModel);
+            studentBinding.getRoot().setOnClickListener(view->{
+                personClick.onClick(studentBinding.getRoot(),personModel);
+            });
         }
     }
 }
